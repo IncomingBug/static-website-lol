@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<video autoplay muted playsinline>
+  <source src="https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4" type="video/mp4">
+</video>
+
+<script>
+  // Try to unmute after autoplay starts
+  const v = document.querySelector("video");
+  v.addEventListener("click", () => {
+    v.muted = false;
+    v.volume = 1;
+  });
+</script>
+
+</body>
+</html>
