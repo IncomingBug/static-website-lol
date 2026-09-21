@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading...</title>
   <style>
     html, body {
@@ -9,27 +10,39 @@
       padding: 0;
       background: black;
       height: 100%;
+      width: 100%;
       overflow: hidden;
+      cursor: pointer;
     }
     video {
       width: 100vw;
       height: 100vh;
       object-fit: cover;
     }
+    #trigger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+      background: transparent;
+    }
   </style>
 </head>
 <body>
-
-<video autoplay muted playsinline>
-  <source src="https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4" type="video/mp4">
+<div id="trigger"></div>
+<video id="myVideo" autoplay muted playsinline loop>
+  <source src="https://archive.org/download/Rick_Astley_Never_Gonna_Give_Up/Rick_Astley_Never_Gonna_Give_Up.mp4" type="video/mp4">
 </video>
-
 <script>
-  // Try to unmute after autoplay starts
-  const v = document.querySelector("video");
-  v.addEventListener("click", () => {
-    v.muted = false;
-    v.volume = 1;
+  const video = document.getElementById("myVideo");
+  const trigger = document.getElementById("trigger");
+  trigger.addEventListener("click", () => {
+    video.muted = false;
+    video.volume = 1.0;
+    video.play();
+    trigger.remove();
   });
 </script>
 
